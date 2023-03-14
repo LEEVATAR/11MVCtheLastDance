@@ -56,9 +56,11 @@
 									var displayValue = "<h3>"
 																+"상품번호 : "+JSONData.prodNo+"<br/>"
 																+"상품명 : "+JSONData.prodName+"<br/>"
+																+"상품이미지 : "+JSONData.fileName+"<br/>"
+																+"상품상세정보 : "+JSONData.prodDetail+"<br/>"
+																+"제조일자 : "+JSONData.manuDate+"<br/>"
 																+"가  격 : "+JSONData.price+"<br/>"
-																+"등록일 : "+JSONData.regDate+"<br/>"
-																+"현재상태 : "+JSONData.proTranCode+"<br/>"
+																+"등록일 : "+JSONData.regDateString+"<br/>"
 																+"</h3>";
 									//Debug...									
 									//alert(displayValue);

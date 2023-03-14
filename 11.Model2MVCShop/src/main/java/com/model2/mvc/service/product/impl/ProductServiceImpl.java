@@ -51,10 +51,13 @@ public class ProductServiceImpl implements ProductService{
 		
 		return map;
 	}
-	
-	
+		
 	public void updateProduct(Product product) throws Exception {
 		productDao.updateProduct(product);
 	}
-
+	
+	@Override
+	public List<Map<String, Object>>autocomplete(Map<String, Object> paramMap) throws Exception{
+		return productDao.autocomplete(paramMap);
+		}
 }

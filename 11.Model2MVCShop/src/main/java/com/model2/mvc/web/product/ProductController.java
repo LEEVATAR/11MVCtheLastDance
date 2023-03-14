@@ -1,5 +1,6 @@
 package com.model2.mvc.web.product;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
@@ -45,7 +47,6 @@ public class ProductController {
 	//@Value("#{commonProperties['pageUnit'] ?: 3}") 다양한 사용방법을 알아둬라 근데 따로따로관리할땐 이게더좋은거같은데?
 	@Value("#{commonProperties['pageUnit']}")
 	int pageUnit;
-	
 	
 	//@Value("#{commonProperties['pageSize'] ?: 2}")만약 오타일때 없으면 40번라인기준 3으로 들어가라, 44번라인기준 2로
 	@Value("#{commonProperties['pageSize']}")
@@ -128,5 +129,14 @@ public class ProductController {
 		model.addAttribute("search", search);
 		
 		return "forward:/product/listProduct.jsp";
+	}
+	@RequestMapping(value = "autocomplete")
+	public @ResponseBody Map<String, Object> autocomplete
+    						(@RequestParam Map<String, Object> paramMap) throws Exception{
+
+		List<Map<String, Object>> resultList = productService.autocomplete(paramMap);
+		paramMap.put("resultList", resultList);
+
+		return paramMap;
 	}
 }

@@ -30,8 +30,7 @@
 		prod_no , prod_name , prod_detail , manufacture_day , price, image_file, reg_date 		
 		FROM product 
 		WHERE prod_no = #{value}
-	 </select>
-	 
+	 </select>	 
 	 
 	 <!-- SQL : UPDATE -->
 	 <update	id="updateProduct"	parameterType="product" >
@@ -107,20 +106,9 @@
 	 </select>
 	 <select id="autocomplete" parameterType="map" resultType="map">
 		SELECT
-		*
-		FROM product
-						<if test="searchCondition != null">
-							<where>
-								<if test="searchCondition == 0 and searchKeyword !='' ">
-									prod_no = #{searchKeyword}
-								</if>
-								<if test="searchCondition == 1 and searchKeyword !='' ">
-									prod_name = #{searchKeyword}
-								</if>
-								<if test="searchCondition == 2 and searchKeyword !='' ">
-									price = #{searchKeyword}
-								</if>
-							</where>
-						</if> ) countTable
-	</select>
+		prod_Name, prod_No
+		FROM product 	
+		where prod_name like '%${value}%'
+		
+	 </select>
 </mapper>

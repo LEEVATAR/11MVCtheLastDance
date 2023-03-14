@@ -17,5 +17,6 @@ public interface ProductService {
 	public Map<String, Object> getProductList(Search search) throws Exception;
 	
 	public void updateProduct(Product product) throws Exception;
-
+	
+	public List<Map<String, Object>> autocomplete(Map<String, Object> paramMap) throws Exception;
 }

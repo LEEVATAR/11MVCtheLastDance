@@ -23,7 +23,10 @@ public class User {
 	//////////////////////////////////////////////////////////////////////////////////////////////
 	// JSON ==> Domain Object  Binding을 위해 추가된 부분
 	private String regDateString;
-
+	// 다음주소찾기를 위해 추가함
+	//private String postcode;
+	private String address;
+	private String addressDetail;	
 	
 	
 	///Constructor
@@ -78,6 +81,12 @@ public class User {
 	}
 	public void setAddr(String addr) {
 		this.addr = addr;
+		/////////////// 다음주소찾기 적용 위해 추가 ///////////
+		if(addr != null && addr.length() !=0 ){
+			//postcode = addr.split(" ")[0];
+			address = addr.split(" ")[0];
+			addressDetail = addr.split(" ")[1];
+		}
 	}
 	public String getEmail() {
 		return email;

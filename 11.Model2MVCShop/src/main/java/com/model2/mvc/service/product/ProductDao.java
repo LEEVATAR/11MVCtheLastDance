@@ -1,6 +1,7 @@
 package com.model2.mvc.service.product;
 
 import java.util.List;
+import java.util.Map;
 
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Product;
@@ -24,4 +25,6 @@ public interface ProductDao {
 	// 게시판 Page 처리를 위한 전체Row(totalCount)  return
 	public int getTotalCount(Search search) throws Exception ;
 	
+	// 검색어 자동완성
+	public List<Map<String, Object>>autocomplete(Map<String, Object> paramMap) throws Exception;
 }
