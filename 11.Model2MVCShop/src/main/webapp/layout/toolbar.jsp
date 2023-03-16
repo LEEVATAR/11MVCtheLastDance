@@ -16,7 +16,7 @@
 		<div class="navbar-header">
 		    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#target">
 		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span> 
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		    </button>
@@ -132,4 +132,19 @@
 				self.location = "/product/addProductView.jsp"
 			}); 
 		 });
+	 	
+		 $(function() {
+				//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$("a:contains('판매상품관리')").on("click" , function() {
+				//$(self.location).attr("href","/user/logout");
+				self.location = "/product/listProduct?menu=manage"
+				}); 
+			 });
+		 $(function() {
+				//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$("a:contains('상 품 검 색')").on("click" , function() {
+				//$(self.location).attr("href","/user/logout");
+				self.location = "/product/listProduct?menu=search"
+				}); 
+			 });
 	</script>  

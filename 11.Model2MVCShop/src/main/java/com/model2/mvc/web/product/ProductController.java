@@ -1,9 +1,9 @@
 package com.model2.mvc.web.product;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,13 +12,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
@@ -51,24 +51,24 @@ public class ProductController {
 	//@Value("#{commonProperties['pageSize'] ?: 2}")만약 오타일때 없으면 40번라인기준 3으로 들어가라, 44번라인기준 2로
 	@Value("#{commonProperties['pageSize']}")
 	int pageSize;
-//	@GetMapping("addProduct")
-//	public String addUser() throws Exception{
-//		
-//		System.out.println("/product/addProduct : GET");
-//		
-//		return "redirect:/product/getProduct.jsp";
-//	}
-//	@RequestMapping("/addProduct.do") 주석 when 07refact 겟인지 테스트좀
-//	@RequestMapping( value="addProduct", method=RequestMethod.POST)
 	@RequestMapping("addProduct")
-	public String addProduct( @ModelAttribute("product") Product product ) throws Exception {
+	public String addProduct( @ModelAttribute("product") Product product, @RequestParam("imageName") MultipartFile mFile ) throws Exception {
 		System.out.println("/product/addProduct : POST");
-		System.out.println(product+" 무엇이 보이는가?");
+		System.out.println(product+" 무엇이 보이는가?");		
 		
+		String imageName = mFile.getOriginalFilename();
 		//Business Logic
-		productService.addProduct(product);
+		product.setFileName(imageName);
+		productService.addProduct(product);//기존에 있던거
+				
 		System.out.println(product+" 프로덕트 잘들어왔니?"); 
-		System.out.println(product.getProdNo()+"prodNO출력요청");
+		System.out.println(product.getProdNo()+"prodNo좀 보여주겠니?");
+		
+		imageName = System.currentTimeMillis()+"_"+imageName;
+		product.setFileName(imageName);
+		File saveFile = new File("C:\\Users\\LeeWay\\git\\10MVCAjax\\10.Model2MVCShop(Ajax)\\src\\main\\webapp\\images\\uploadFiles", imageName);
+		mFile.transferTo(saveFile);
+		
 		return "forward:/product/addProduct.jsp";
 	}
 	

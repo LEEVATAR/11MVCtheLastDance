@@ -32,6 +32,9 @@
 
 <!-- 기존코드 07번webapp/product참조 -->
 	<script type="text/javascript">
+	$( function() {
+	    $( "#datepicker" ).datepicker();
+	});	
 	function fncAddProduct(){
 		//Form 유효성 검증
 	 	
@@ -93,15 +96,12 @@
 </head>
 
 <body>
-	<div class="navbar  navbar-default">
-        <div class="container">
-        	<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
-   		</div>
-   	</div>
+
+<jsp:include page="/layout/toolbar.jsp" />
 
 	<div class="container">
 		<!-- 맨위의 제목부분  -->
-		<h1 class="bg-primary text-left">제품등록 페이지</h1>
+		<div class="page-header text-info"><h3>제품등록 페이지</h3></div>
 		
 		<!-- form start시작 -->
 		<form class="form-horizontal">
@@ -126,7 +126,7 @@
 		<div class="form-group">
 		    <label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>
 		    <div class="col-sm-4">
-		      <input type="date" class="form-control" id="manuDate" name="manuDate" placeholder="제조일자">
+		      <input type="date" class="form-control" id="datepicker" name="manuDate" placeholder="제조일자">
 		    </div>
 		</div>
 		
@@ -146,9 +146,9 @@
 	
 		<div class="form-group">
 		    <div class="col-sm-offset-4  col-sm-4 text-center">
-		      <button type="button" class="btn btn-primary" ><i class="glyphicon glyphicon-flash"></i>상품등록</button>
-		      <button type="button" class="btn btn-primary" ><i class="glyphicon glyphicon-flash"></i>다시쓰기</button>
-		      <button type="button" class="btn btn-primary" ><i class="glyphicon glyphicon-flash"></i>돌아가기</button>
+		      <button type="button" class="btn btn-primary" ><i class="glyphicon glyphicon-check"></i>&nbsp;상품등록</button>
+		      <button type="button" class="btn btn-primary" ><i class="glyphicon glyphicon-pencil"></i> &nbsp;다시쓰기</button>
+		      <button type="button" class="btn btn-primary" ><i class="glyphicon glyphicon-repeat"></i> &nbsp;돌아가기</button>
 			  <!-- <a class="btn btn-primary btn" href="#" role="button"><i class="glyphicon glyphicon-flash"></i>다시쓰기</a>
 			  <a class="btn btn-primary btn" href="##" role="button"><i class="glyphicon glyphicon-flash"></i>돌아가기</a> -->
 		    </div>

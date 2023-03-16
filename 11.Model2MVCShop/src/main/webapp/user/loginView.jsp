@@ -39,11 +39,12 @@
 				var id=$("input:text").val();
 				var pw=$("input:password").val();
 				
-				if(id == null || id.length <1) {
+				if(id == null || id.length <1 ) {
 					alert('ID 를 입력하지 않으셨습니다.');
 					$("#userId").focus();
 					return;
-				}
+				}				
+				
 				
 				if(pw == null || pw.length <1) {
 					alert('패스워드를 입력하지 않으셨습니다.');
