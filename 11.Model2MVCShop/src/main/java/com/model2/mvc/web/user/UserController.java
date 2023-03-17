@@ -177,8 +177,7 @@ public class UserController {
 		//response.setContentType("application/json; charset=utf-8");
 		return "forward:/user/listUser.jsp";
 		
-	}
-	
+	}	
 	@RequestMapping(value = "autocomplete")
 	public @ResponseBody Map<String, Object> autocomplete
     						(@RequestParam Map<String, Object> paramMap) throws Exception{

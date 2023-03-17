@@ -23,9 +23,9 @@
 	<script type="text/javascript" src="../javascript/calendar.js"></script>
  	
  	<style>
-       body > div.container{
-        	border: 3px solid #D6CDB7;
-            margin-top: 10px;
+       body {
+            padding-top : 50px;
+            
         }
     </style>
 
@@ -60,13 +60,13 @@
 			return;
 		}
 		
-		$("form").attr("method" , "POST").attr("action" , "/product/addProduct").submit();
+		$("form").attr("method" , "POST").attr("action" , "/product/addProduct").attr("enctype", "multipart/form-data").submit();
 	}
 				
 		$(function() {
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			//==> 1 과 3 방법 조합 : $("tagName.className:filter함수") 사용함.	
-			 $( "button.btn.btn-primary" ).on("click" , function() {
+			 $( "button.btn.btn-primary:contains('상품등록')" ).on("click" , function() {
 				//alert(  $( "td.ct_btn01:contains('등록')" ).html() );
 				//console.log(prodName, detail, price, manuDate);
 				fncAddProduct();
@@ -74,9 +74,8 @@
 		});
 		
 		$(function() {
-			 $("a[href='##']").on("click" , function() {
+			 $("button.btn.btn-primary:contains('목록으로')").on("click" , function() {
 				//Debug..
-				//alert(  $( ".Depth03:contains('회원정보조회')" ) ); ?? 맞나이게 셀프로케이션인듯?
 			 	//$(window.parent.frames["rightFrame"].document.location).attr("href","/product/listProduct?menu=manage");
 				self.location = "/product/listProduct?menu=manage"
 			 });
@@ -85,7 +84,7 @@
 		$(function() {
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			//==> 1 과 3 방법 조합 : $("tagName.className:filter함수") 사용함.	
-			 $("a[href='#']").on("click" , function() {
+			 $("button.btn.btn-primary:contains('다시쓰기')").on("click" , function() {
 					//Debug..
 					//alert(  $( "td.ct_btn01:contains('취소')" ).html() );
 					$("form")[0].reset();
@@ -118,7 +117,7 @@
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="prodDetail" name="prodDetail" placeholder="상품상세정보">
 		    <span id="helpBlock" class="help-block">
-		      	<strong class="text-danger">제품특징을 자세히 적어주세요.</strong>
+		      	<strong class="text-danger">제품특징은 자세히 적어주세요.</strong>
 		     </span>
 		    </div>
 		</div>
@@ -131,7 +130,7 @@
 		</div>
 		
 		<div class="form-group">
-		    <label for="price" class="col-sm-offset-1 col-sm-3 control-label">가격</label>
+		    <label for="price" class="col-sm-offset-1 col-sm-3 control-label">상품가</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="price" name="price" placeholder="가격">
 		    </div>
@@ -140,7 +139,7 @@
 		<div class="form-group">
 		    <label for="fileName" class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>
 		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="fileName" name="fileName" placeholder="상품이미지">
+		      <input type="file" class="form-control" id="fileName" name="imageName" placeholder="상품이미지">
 		    </div>
 		</div>
 	
@@ -148,7 +147,7 @@
 		    <div class="col-sm-offset-4  col-sm-4 text-center">
 		      <button type="button" class="btn btn-primary" ><i class="glyphicon glyphicon-check"></i>&nbsp;상품등록</button>
 		      <button type="button" class="btn btn-primary" ><i class="glyphicon glyphicon-pencil"></i> &nbsp;다시쓰기</button>
-		      <button type="button" class="btn btn-primary" ><i class="glyphicon glyphicon-repeat"></i> &nbsp;돌아가기</button>
+		      <button type="button" class="btn btn-primary" ><i class="glyphicon glyphicon-repeat"></i> &nbsp;목록으로</button>
 			  <!-- <a class="btn btn-primary btn" href="#" role="button"><i class="glyphicon glyphicon-flash"></i>다시쓰기</a>
 			  <a class="btn btn-primary btn" href="##" role="button"><i class="glyphicon glyphicon-flash"></i>돌아가기</a> -->
 		    </div>

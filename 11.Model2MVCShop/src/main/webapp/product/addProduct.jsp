@@ -2,14 +2,6 @@
 <%@ page pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-<%-- EL/JSTL 적용으로 주석 
-<%@ page import="com.model2.mvc.service.domain.*" %>
-
-<%
-	Product product = (Product)session.getAttribute("product");
-%>
---%>
 <!DOCTYPE html>
 
 <html lang="ko">
@@ -36,7 +28,6 @@
 	$(function() {
 		 $("button.btn.btn-primary:contains('확인')").on("click" , function() {
 			//Debug..
-			//alert(  $( ".Depth03:contains('회원정보조회')" ) ); ?? 맞나이게 셀프로케이션인듯?
 		 	//$(window.parent.frames["rightFrame"].document.location).attr("href","/product/listProduct?menu=manage");
 			self.location = "/product/listProduct?menu=manage"
 		 });
@@ -94,7 +85,7 @@
 		
 		<div class="row">
 	  		<div class="col-xs-4 col-md-2"><strong>상품이미지</strong></div>
-			<div class="col-xs-8 col-md-4">${product.fileName}</div>
+			<div class="col-xs-8 col-md-4" ><img src="../../images/uploadFiles/${product.fileName}"/></div>
 		</div>
 		
 		<hr/>

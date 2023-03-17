@@ -35,7 +35,6 @@
 	
 function fncGetProduct(currentPage, menu){
 	$("#currentPage").val(currentPage)
-	$("#menu").val(menu)
 	$("form").attr("method" , "POST").attr("action" , "/user/listUser").submit();	
 }
 $(function() {
@@ -68,22 +67,8 @@ $(function() {
 	    </div>
 	
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2"><strong>상품번호</strong></div>
-			<div class="col-xs-8 col-md-4">${product.prodNo}</div>
-		</div>
-		
-		<hr/>
-		
-		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>상품명</strong></div>
+	  		<div class="col-xs-4 col-md-2"><strong>상품명</strong></div>
 			<div class="col-xs-8 col-md-4">${product.prodName}</div>
-		</div>
-		
-		<hr/>
-		
-		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>상품이미지</strong></div>
-			<div class="col-xs-8 col-md-4"> <img src = ${ product.fileName}/></div>
 		</div>
 		
 		<hr/>
@@ -96,7 +81,7 @@ $(function() {
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2"><strong>제조일자</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>제조일자</strong></div>
 			<div class="col-xs-8 col-md-4">${product.manuDate}</div>
 		</div>
 		
@@ -104,7 +89,15 @@ $(function() {
 		
 		<div class="row">
 	  		<div class="col-xs-4 col-md-2 "><strong>가격</strong></div>
-			<div class="col-xs-8 col-md-4">${product.price}</div>
+			<div class="col-xs-8 col-md-4">${product.price}	</div>
+		</div>
+		
+		<hr/>
+		
+		<div class="row">
+	  		<div class="col-xs-4 col-md-2"><strong>상품이미지</strong></div>
+			<div class="col-xs-8 col-md-4" ><img src="../../images/uploadFiles/${product.fileName}" width="150px"> 
+			
 		</div>
 		
 		<hr/>

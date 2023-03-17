@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.deser.impl.ExternalTypeHandler.Builder;
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Product;
@@ -49,24 +50,27 @@ public class ProductController {
 	int pageUnit;
 	
 	//@Value("#{commonProperties['pageSize'] ?: 2}")만약 오타일때 없으면 40번라인기준 3으로 들어가라, 44번라인기준 2로
-	@Value("#{commonProperties['pageSize']}")
+	@Value("#{commonProperties['pageSize']}")	
 	int pageSize;
+	
+	@Value("#{commonProperties['imagePath']}")
+	String imagePath;
+	
 	@RequestMapping("addProduct")
 	public String addProduct( @ModelAttribute("product") Product product, @RequestParam("imageName") MultipartFile mFile ) throws Exception {
 		System.out.println("/product/addProduct : POST");
-		System.out.println(product+" 무엇이 보이는가?");		
-		
+		System.out.println(product+" 무엇이 보이는가?");				
 		String imageName = mFile.getOriginalFilename();
 		//Business Logic
 		product.setFileName(imageName);
 		productService.addProduct(product);//기존에 있던거
 				
 		System.out.println(product+" 프로덕트 잘들어왔니?"); 
-		System.out.println(product.getProdNo()+"prodNo좀 보여주겠니?");
-		
+		System.out.println(product.getProdNo()+"prodNo좀 보여주겠니?");		
 		imageName = System.currentTimeMillis()+"_"+imageName;
+		
 		product.setFileName(imageName);
-		File saveFile = new File("C:\\Users\\LeeWay\\git\\10MVCAjax\\10.Model2MVCShop(Ajax)\\src\\main\\webapp\\images\\uploadFiles", imageName);
+		File saveFile = new File(imagePath, imageName);
 		mFile.transferTo(saveFile);
 		
 		return "forward:/product/addProduct.jsp";
@@ -97,13 +101,25 @@ public class ProductController {
 	}
 //	@RequestMapping("/updateProduct.do", method=RequestMethod.POST)
 	@PostMapping( value ="updateProduct")
-	public String updateProduct( @ModelAttribute("product") Product product , Model model , HttpSession session) throws Exception{
-		
+	public String updateProduct(  @ModelAttribute("product") Product product, Model model, @RequestParam("imageName") MultipartFile mFile, HttpSession session) throws Exception{
+		System.out.println("내게 강같은 prodNo"+ product.getProdNo());
 		System.out.println("/product/updateProduct : POST");
+		String imageName = mFile.getOriginalFilename();
 		//Business Logic
-		session.setAttribute("product", product);
+		product.setFileName(imageName);		
+					
+		imageName = System.currentTimeMillis()+"_"+imageName;
+		
+		product.setFileName(imageName);
+		File saveFile = new File(imagePath, imageName);
+		mFile.transferTo(saveFile);
+		
+		//Business Logic
+		//session.setAttribute("product", product);
+		System.out.println(product+" 업데이트프로덕트 잘들어왔니?"); 
+		model.addAttribute("product", product);
 		productService.updateProduct(product);
-		return "redirect:/product/getProduct?prodNo="+product.getProdNo();
+		return "forward:/product/getProduct?prodNo="+product.getProdNo();
 	}
 	
 //	@RequestMapping("/listProduct.do")

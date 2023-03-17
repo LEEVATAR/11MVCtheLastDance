@@ -5,7 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<!DOCTYPE html>
 
 <html lang="ko">
 	
@@ -53,11 +52,12 @@
 		
 		//============= "검색"  Event  처리 =============	
 		 $(function() {
-			 //==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-			 //$( "button.btn.btn-default" ).on("click" , function() {
-			//	fncGetUserList(1);
-			//});
-		 });
+			 $( "button.btn.btn-default" ).on("click" , function() {
+					//Debug..
+					//alert(  $( "td.ct_btn01:contains('검색')" ).html() );
+					fncGetUserList(1);
+				});
+			});
 		
 		
 		//============= userId 에 회원정보보기  Event  처리(Click) =============	
@@ -108,6 +108,43 @@
 					
 			});
 			
+			$('#autoComplete').autocomplete({
+				source : function(request, response) { //source: 입력시 보일 목록
+					
+					$.ajax({
+				           url : "/user/autocomplete"   
+				         , type : "POST"
+				         , dataType: "JSON"
+				         , data : {value: request.term}	// 검색 키워드
+				         , success : function(data){ 	// 성공하면 매퍼쪽으로 감 
+				             response(
+				                 $.map(data.resultList, function(item) {
+				                     return {
+				                    	     label : item.USER_NAME  // 목록에 표시되는 값
+				                           , value : item.USER_NAME  // 선택 시 input창에 표시되는 값
+				                           , idx : item.USER_NAME // index
+				                    };
+				                	 })
+				             );    //response
+				         }
+				         ,error : function(){ //실패
+				             alert("오류가 발생했습니다.");
+				         }
+				     });
+				}
+				,focus : function(event, ui) { // 방향키로 자동완성단어 선택 가능하게 만들어줌	
+						return false;
+				}
+				,minLength: 1// 최소 글자수
+				,autoFocus : true // true == 첫 번째 항목에 자동으로 초점이 맞춰짐
+				,delay: 100	//autocomplete 딜레이 시간(ms)
+				,select : function(evt, ui) { 
+			      	// 아이템 선택시 실행 ui.item 이 선택된 항목을 나타내는 객체, lavel/value/idx를 가짐
+						console.log(ui.item.label);
+						console.log(ui.item.idx);
+				 }
+			});
+			
 			//==> userId LINK Event End User 에게 보일수 있도록 
 			$( ".ct_list_pop td:nth-child(3)" ).css("color" , "red");
 			$("h7").css("color" , "red");
@@ -154,7 +191,7 @@
 				  
 				  <div class="form-group">
 				    <label class="sr-only" for="searchKeyword">검색어</label>
-				    <input type="text" class="form-control" id="searchKeyword" name="searchKeyword"  placeholder="검색어"
+				    <input type="text" class="form-control" id="autoComplete" name="searchKeyword"  placeholder="검색어"
 				    			 value="${! empty search.searchKeyword ? search.searchKeyword : '' }"  >
 				  </div>
 				  

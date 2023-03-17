@@ -48,18 +48,20 @@
    	<div class="container ">
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>11. Model2MVCShop </h1>
-        <p>All by my self</p>
+        <h1 align="center">11RF. Model2MVCShop </h1>
+        <p align="center">Almost by myself</p>
      </div>
     </div>
 
 	<!-- 참조 : http://getbootstrap.com/css/   : container part..... -->
 	<div class="container">
-         <h2>도망친 곳에 낙원은 없다.</h2>
-         <p>오늘 나의 불행은 언젠가 내가 잘못 보낸 시간의 보복이다</p>
-         <p>역경을 뒤집으면 경력이 된다.</p>
-         <p>순간에 최선을 다하면 후회가 없다</p>
-         <p>개발자는 한만큼 아는만큼 대우받을 수 있다</p>
+		 
+		 <div class="col-md-6" align="center" >
+					<img src="/images/좌절감.png" class="img-rounded" width="130%" />
+		</div>
+		
+		 <br/>
+         
   	 </div>
 
 </body>
