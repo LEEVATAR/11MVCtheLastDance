@@ -1,5 +1,5 @@
 # 11MVCtheLastDance
-Yeee
+안녕하세요 주니어 개발자 이현석의 11최종 리팩토링버전 MVC SHOP입니다~
 
 # MVC SHOP
 
