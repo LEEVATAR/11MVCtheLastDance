@@ -118,11 +118,3 @@ Yeee
     
     프로젝트를 진행하면서 Java, Tomcat, MyBatis등의 공식 Document 들을 많이 접하면서 Document를 읽는 능력이 생겼으며 이후 처음 접하는 기술이나 모르는 점이 생겼을 경우 먼저 Document를 찾아 해결하려는 습관을 가지게 되었다.
     
-
-## ℹ️  참고 링크 및 참고 자료
-
----
-
-### **👉🏻[GitHub](https://github.com/Function3333/SSTV)**
-
-### **👉🏻[프로젝트에 대한 학습기록](https://github.com/Function3333/NaverCloudCamp)**
