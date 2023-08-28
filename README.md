@@ -110,6 +110,7 @@ Yeee
 </aside>
 
 </br>
+<aside>
 ## 💡느낀 점
 
 ---
@@ -122,4 +123,4 @@ Yeee
 - **Document와 친해지기**
     
     프로젝트를 진행하면서 Java, Tomcat, MyBatis등의 공식 Document 들을 많이 접하면서 Document를 읽는 능력이 생겼으며 이후 처음 접하는 기술이나 모르는 점이 생겼을 경우 먼저 Document를 찾아 해결하려는 습관을 가지게 되었다.
-    
+    </aside>
