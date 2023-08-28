@@ -40,7 +40,6 @@ Yeee
 
 ---
 
-### 각 단계별 소스코드가 궁금하다면 [👉🏻클릭!](https://github.com/Function3333/NaverCloudCamp_MiniPJT/tree/main)
 
 ### **01PJT**
 
@@ -104,6 +103,9 @@ Yeee
 💡 비동기통신에 대한 개념을 학습하고 Ajax를 통해 Presentation Layer를 동적페이지로 변경
 
 </aside>
+
+### 11PJT
++ html, css를 현대적으로 적용하고, BootStrap을 통해 예쁘게 꾸며보자
 
 ## 💡느낀 점
 
