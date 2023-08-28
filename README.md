@@ -106,7 +106,7 @@
 
 ### 11PJT
 <aside>
-💡  html, css를 현대적으로 적용하고, BootStrap을 통해 예쁘게 꾸며보자
+💡  html, css를 현대적으로 적용하고, BootStrap을 통해 디자인 적용
 </aside>
 
 
